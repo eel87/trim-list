@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Trim List - Create list.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <base href="/">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/index.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/create.css">
+    <link rel="stylesheet" type="text/css" href="assets/stylesheets/normalize.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="main">
+        <p class="content-title">Create List</h1>
+
+      <form>
+        <div class="form-group">
+          <label for="listTitle" class="formTitle">List Name:</label>
+          <input class="form-control" type="text" id="listName">
+          <label for='dueDate' class="formDueDate">Due Date</label>
+          <input class="form-control" type="text" id='dueDate'>
+          <a class="btn btn-primary glyphicon glyphicon-arrow-right" href="views/create-list-items.html" role="button" id="nextBtn" aria-label="next">
+          </a>
+        </div>
+      </form>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="scripts/create_list.js"></script>
+    <script src="scripts/create_items.js"></script>
+  </body>
+</html>
