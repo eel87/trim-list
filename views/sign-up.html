@@ -1,37 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <base href="/">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="assets/stylesheets/normalize.css">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
-  </head>
+<section class="main">
+  <h1 class="title">Sign Up<br></h1>
+</section>
 
-  <body>
-        <section class="main">
-          <h1 class="title">Sign Up<br></h1>
-        </section>
+<form id="signup-form">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input class="form-control" type="text" id="name">
+    <label for="login-email">Email:</label>
+    <input class="form-control" type="email" id="signup-email" required>
+    <label for='password'>Password:</label>
+    <input class="form-control" type="password" id='signup-password' required>
+    <button type="submit" id="signup-next-btn" aria-label="sign up">Sign Up</a>
+  </div>
+</form>
 
-        <form id="signup-form">
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input class="form-control" type="text" id="name">
-            <label for="login-email">Email:</label>
-            <input class="form-control" type="email" id="signup-email" required>
-            <label for='password'>Password:</label>
-            <input class="form-control" type="password" id='signup-password' required>
-            <button type="submit" id="signup-next-btn" aria-label="sign up">Sign Up</a>
-          </div>
-        </form>
-  
-      </script>
-      <script src="scripts/index.js"></script>
-      <script src="scripts/auth.js"></script>
-  </body>
-</html>
+<script src="scripts/index.js"></script>
+<script src="scripts/auth.js"></script> 
