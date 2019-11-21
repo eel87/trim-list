@@ -10,21 +10,14 @@ function setupUI(user) {
     $(".logged-in").hide(); 
     $(".logged-out").show();
   }
-}
-
-var FormData = {
-  listTitle: '',
-  dueDate: ''
-}
+};
 
 //add list title and due date to db
 function createListTitle() {
-  var dueDate = FormData.dueDate;
-  var listTitle = FormData.listTitle;
   event.preventDefault();
 
-  db.collection('lists').doc(listTitle).set({
-    dueDate: dueDate, 
+  db.collection('lists').doc(FormData.listTitle).set({
+    dueDate: FormData.dueDate, 
     user: currentUser.email
   });
 }

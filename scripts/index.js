@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+  $(window).FormData = {
+    listTitle: '',
+    dueDate: ''
+  };  
+
   $('.sign-up-btn').click(function() {
     $('.main-content').load("views/sign-up.html");
   }); 
@@ -24,6 +29,7 @@ $(document).ready(function() {
     event.preventDefault();
     FormData.listTitle = $("#listTitle").val();
     FormData.dueDate = $("#dueDate").val();
+    console.log("submit function->" + FormData.listTitle + FormData.dueDate);
     createListTitle();
     $(".main-content").load("views/create-list-items.html")
   });
