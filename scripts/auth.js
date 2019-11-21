@@ -1,23 +1,31 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user) {
-    // $('.buttons').load("views/user-option-btns.html #buttons");
+    setupUI(user);
   } else {
-    // $('document').load('index.html');
+    setupUI();
   }
 });
+
+//current user
+var currentUser = firebase.auth().currentUser;
 
 //signup
 var signupForm = $("#signup-form")
 signupForm.submit(function(event) { 
   event.preventDefault();
 
+  var name = $("#name").val();
   var email = $("#signup-email").val();
   var password = $("#signup-password").val();
 
   // sign up the user
-  auth.createUserWithEmailAndPassword(email, password).then(cred => {
-    // $('.main-content').load('views/create-list-title.html');
+  auth.createUserWithEmailAndPassword(email, password).then(user => {
+    //save user to db
+    db.collection('users').add({
+      name: name,
+      email: email,
+    })
   });
 });
 
@@ -30,9 +38,7 @@ signinForm.submit(function(event) {
   var email = $("#signin-email").val();
   var password = $("#signin-password").val();
   
-  auth.signInWithEmailAndPassword(email, password).then(cred => {
-    $('.main').load("views/user-option-btns.html");
-  });
+  auth.signInWithEmailAndPassword(email, password);
 });
 
 // log out

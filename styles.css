@@ -19,7 +19,7 @@ body {
 .main-content {
   box-sizing: border-box;
   border: solid #1c2a43 3px;
-  border-radius: 25px;
+  border-radius: 10px;
   width: 500px;
   height: 600px; 
   background-color: white;
@@ -29,7 +29,7 @@ body {
   margin-right: auto;
 }
 
-.title {
+.content-title {
   margin-top: 50px;
   font-size: 45px;
   text-align: center;
@@ -38,7 +38,7 @@ body {
 .buttons {
   position: relative;
   width: 250px;
-  height: 150px;
+  height: 325px;
   margin-top: 75px;
   margin-left: auto;
   margin-right: auto;
@@ -53,6 +53,11 @@ body {
   background-color:  #408d8d; 
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.btn-block:hover {
+  background-color: #1c2a43;
+  color: white;
 }
 
 .glyphicon {
@@ -96,4 +101,10 @@ body {
 
 .formDueDate{
   padding-top: 15px;
+}
+
+.nav-buttons {
+  position: absolute;
+  margin-left: auto;
+  margin-rig
 }
