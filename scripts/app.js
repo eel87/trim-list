@@ -12,17 +12,29 @@ function setupUI(user) {
   }
 }
 
-var listTitle = $("#listTitle").val();
+var FormData = {
+  listTitle: '',
+  dueDate: ''
+}
 
 //add list title and due date to db
 function createListTitle() {
-  var dueDate = $("#dueDate").val();
-  // var listTitle = $("#listTitle").val();
+  var dueDate = FormData.dueDate;
+  var listTitle = FormData.listTitle;
   event.preventDefault();
 
   db.collection('lists').doc(listTitle).set({
     dueDate: dueDate, 
     user: currentUser.email
+  });
+}
+
+function addItem() {
+  var listRef = db.collection('lists').doc(FormData.listTitle);
+  var item = $("#item").val();
+
+  listRef.update({
+    items: firebase.firestore.FieldValue.arrayUnion(item)
   });
 }
 
@@ -49,56 +61,22 @@ function createListTitle() {
   //     console.log("doc= " + doc);
   //   })
   // })
-
-//   currentUserRef.collection('lists').where("listTitle", "==", listTitle).get().then((collectionSnapshot) => {
-//     collectionSnapshot.docs.forEach(doc => {
-//       console.log("doc=" + doc.data().listTitle);
-//       // db.collection('users').doc(doc.id).collection('lists').where("listTitle", "==", listTitle).get().then(snapShot => {
-//       //   snapShot.docs.forEach(doc => {
-//         // db.collection('users').where("email", "==", currentUser.email).collection('lists').doc(doc.id).collection('items').add({
-//         //     item: item
-//   //       //   });
-//     })
-//   })
-// };
 // }
 
 //print user email list test
 // var emailList = $("#email-list");
 
-// function renderEmailList(doc) {
-//   var li = document.createElement('li');
-//   var name = document.createElement('span');
-//   var email = document.createElement('span');
-//   var cross = document.createElement('div');
-//   cross.setAttribute('id', "cross");
-
-  // jQuery
-  // var newDiv = $('<div/>')
-
-  // Vanilla
-  // var newDiv = document.createElement('div')
-
-  // li.setAttribute('data-id', doc.id);
-  // name.textContent = doc.data().name;
-  // email.textContent = doc.data().email;
-  // cross.textContent = "delete";
-
-  // li.append(name);
-  // li.append(email);
-  // li.append(cross);
-
+  // title.append(name);
   // emailList.append(li);
 
-  //delete user from db
+  // delete user from db
   // $("#cross").click(function(e) {
   //   e.stopPropagation();
     
   //   var id = e.target.parentElement.getAttribute('data-id');
 
-    // db.collection('users').doc.id.delete();
-//   });
-// };
+  //   db.collection('users').doc.id.delete();
+  // });
 
 //get users
 
@@ -143,5 +121,12 @@ function createListTitle() {
 //       var li =  $("#email-list li[data-id=" + change.doc.id + "]")
 //       li.remove();
 //     }
+//   })
+// });
+
+// db.collection('lists').onSnapshot(snapShot => {
+//   console.log(snapShot.data());
+//   snapShot.forEach(doc => {
+//     renderTitle(doc);
 //   })
 // });

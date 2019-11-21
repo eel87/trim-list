@@ -22,13 +22,15 @@ $(document).ready(function() {
 
   $("#create-list-title-form").submit(function(event) {
     event.preventDefault();
+    FormData.listTitle = $("#listTitle").val();
+    FormData.dueDate = $("#dueDate").val();
     createListTitle();
     $(".main-content").load("views/create-list-items.html")
   });
   
   $("#add-item-form").submit(function(event) {
     event.preventDefault();
-    // addItem();
+    addItem();
   });
 
 });
