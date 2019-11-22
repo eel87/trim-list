@@ -9,6 +9,7 @@ auth.onAuthStateChanged(user => {
 });
 
 //current user
+
 var currentUser = firebase.auth().currentUser;
 
 //signup

@@ -11,6 +11,10 @@ $(document).ready(function() {
     $('.main-content').load("views/sign-up.html");
   })
 
+  $(document).on('click', '#signup-next-btn', function() {
+    $("body").load("index.html .main-content");
+  })
+
   $(document).on('click', '.sign-in-btn', function() {
     $('.main-content').load("views/sign-in.html");
   })
@@ -18,14 +22,16 @@ $(document).ready(function() {
   $("#signin-form").submit(function() {
     $("body").load("index.html .main-content");
   })
-
-  $(document).on('click', '#signup-next-btn', function() {
-    $("body").load("index.html .main-content");
-  })
    
   $(document).on('click', '.create-list-btn', function() {
     $(".main-content").load("views/create-list-title.html");
   })
+
+  $(document).on('click', '.view-lists-btn', function(event) {
+    event.preventDefault();
+    $(".main-content").load("views/view-lists.html");
+    $(window).on("load", renderLists());
+  });
 
   $("#create-list-title-form").submit(function(event) {
     event.preventDefault();
