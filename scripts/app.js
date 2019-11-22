@@ -14,14 +14,17 @@ function setupUI(user) {
 
 //add list title and due date to db
 function createListTitle() {
-  event.preventDefault();
-
   db.collection('lists').doc(FormData.listTitle).set({
     dueDate: FormData.dueDate, 
     user: currentUser.email
   });
 }
 
+function renderListTitle() {
+  $("#content-title").text(FormData.listTitle);
+}
+
+//add item to db
 function addItem() {
   var listRef = db.collection('lists').doc(FormData.listTitle);
   var item = $("#item").val();
@@ -29,6 +32,9 @@ function addItem() {
   listRef.update({
     items: firebase.firestore.FieldValue.arrayUnion(item)
   });
+
+  $("#item").val("");
+  $("#item-list").append("<li>" + item + "</li>");
 }
 
 

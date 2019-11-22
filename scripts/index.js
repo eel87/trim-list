@@ -3,25 +3,27 @@ $(document).ready(function() {
   $(window).FormData = {
     listTitle: '',
     dueDate: ''
-  };  
+  };
 
-  $('.sign-up-btn').click(function() {
+  renderListTitle();
+
+  $(document).on('click','.sign-up-btn', function() {
     $('.main-content').load("views/sign-up.html");
-  }); 
+  })
 
-  $('.sign-in-btn').click(function() {
+  $(document).on('click', '.sign-in-btn', function() {
     $('.main-content').load("views/sign-in.html");
   })
 
   $("#signin-form").submit(function() {
-    $(".main-content").load("views/create-list-title.html")
+    $("body").load("index.html .main-content");
   })
 
-  // $('#signup-next-btn').click(function() {
-  //   $('.main-content').load("views/create-list-title.html")
-  // })
+  $(document).on('click', '#signup-next-btn', function() {
+    $("body").load("index.html .main-content");
+  })
    
-  $('.create-list-btn').click(function() {
+  $(document).on('click', '.create-list-btn', function() {
     $(".main-content").load("views/create-list-title.html");
   })
 
@@ -29,7 +31,6 @@ $(document).ready(function() {
     event.preventDefault();
     FormData.listTitle = $("#listTitle").val();
     FormData.dueDate = $("#dueDate").val();
-    console.log("submit function->" + FormData.listTitle + FormData.dueDate);
     createListTitle();
     $(".main-content").load("views/create-list-items.html")
   });
@@ -37,6 +38,11 @@ $(document).ready(function() {
   $("#add-item-form").submit(function(event) {
     event.preventDefault();
     addItem();
+  });
+
+  $(document).on('click', "#signout-btn", function(event) {
+    event.preventDefault();
+    location.reload();
   });
 
 });

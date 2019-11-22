@@ -1,6 +1,7 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user) {
+    currentUser = user;
     setupUI(user);
   } else {
     setupUI();
@@ -11,8 +12,7 @@ auth.onAuthStateChanged(user => {
 var currentUser = firebase.auth().currentUser;
 
 //signup
-var signupForm = $("#signup-form")
-signupForm.submit(function(event) { 
+$("#signup-form").submit(function(event) { 
   event.preventDefault();
 
   var name = $("#name").val();
@@ -20,19 +20,16 @@ signupForm.submit(function(event) {
   var password = $("#signup-password").val();
 
   // sign up the user
-  auth.createUserWithEmailAndPassword(email, password).then(user => {
-    //save user to db
+  auth.createUserWithEmailAndPassword(email, password).then((user) => {
     db.collection('users').add({
       name: name,
-      email: email,
+      email: email
     })
   });
 });
 
 // signin
-var signinForm = $("#signin-form");
-
-signinForm.submit(function(event) {
+$("#signin-form").submit(function(event) {
   event.preventDefault();
 
   var email = $("#signin-email").val();
@@ -42,9 +39,7 @@ signinForm.submit(function(event) {
 });
 
 // log out
-var logout = $("#signout-btn");
-
-logout.click(function(event) {
+$("#signout-btn").click(function(event) {
   event.preventDefault();
   auth.signOut();
 });
