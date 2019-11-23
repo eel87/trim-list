@@ -51,4 +51,35 @@ $(document).ready(function() {
     location.reload();
   });
 
+  $(document).on('click', '#delete-list', function(event) {
+    event.preventDefault();
+    var id = $(this).attr('data-id');
+    db.collection('lists').doc(id).delete();
+    
+    var userRef = db.collection('users').where("email", "==", currentUser.email);
+    userRef.get()
+    .then(function(snapshot) {
+      snapshot.forEach(function(doc) {
+        doc.ref.update({
+          "lists": firebase.firestore.FieldValue.arrayRemove(id)
+        })
+      })
+    })
+  })
+
+    // userRef
+    // .get()
+    // .then(function(snapshot) {
+    //   snapshot.forEach(function(doc) {
+    //     doc.data().lists.forEach(function(list) {
+    //       if(id == list) {
+    //         console.log(id, list);
+    //         userRef.update({
+    //           "lists": FieldValue.arrayRemove(list)
+    //         })
+    //       }
+    //     })
+    //   })
+    // })
+
 });

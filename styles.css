@@ -109,11 +109,27 @@ body {
   font-size: 20px;
 }
 
-.items, #lists {
+.items {
   margin: auto;
   text-align: center;
   list-style-type: none;
   font-size: 20px;
+}
+
+#lists {
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  list-style-type: none;
+  font-size: 20px;
+  width: 300px;
+}
+
+#delete-list, #open-list {
+  text-align: right;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .nav-buttons {

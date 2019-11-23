@@ -65,9 +65,10 @@
     .then(function(snapshot) {
       snapshot.forEach(function(doc) {
         doc.data().lists.forEach(function(list) {
-          $("#lists").append('<li>' + list + '<button class="btn btn-danger glyphicon glyphicon-trash"></button></li>');
+          var glyphButtons = '<button class="btn btn-danger glyphicon glyphicon-remove pull-right" data-id="' + list + '" + id="delete-list"></button><button class="btn btn-success glyphicon glyphicon-eye-open pull-right" data-id="' + list + '" + id="open-list"></button>'
+          $(".list-titles-list").append('<br><li>' + list + glyphButtons + '</li>');
         })
       })
     })
-    
   }
+  
