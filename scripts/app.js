@@ -44,7 +44,7 @@
     });
 
     $("#item").val("");
-    $("#item-list").append("<li>" + item + "</li>");
+    $("#item-list").append("<li>" + item + "</li><button class= btn glyphicon glyphicon-trash></button>");
   }
 
   //get list name data
@@ -58,6 +58,16 @@
 
   //render lists
   function renderLists(listName) {
-    console.log("renderList");
-    // $("#lists").append("<li><button>" + listName + "</button></li>");
+    var currentUser = firebase.auth().currentUser;
+
+    db.collection('users').where("email", "==", currentUser.email)
+    .get()
+    .then(function(snapshot) {
+      snapshot.forEach(function(doc) {
+        doc.data().lists.forEach(function(list) {
+          $("#lists").append('<li>' + list + '<button class="btn btn-danger glyphicon glyphicon-trash"></button></li>');
+        })
+      })
+    })
+    
   }
