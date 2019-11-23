@@ -1,7 +1,6 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user) {
-    currentUser = user;
     setupUI(user);
   } else {
     setupUI();
@@ -9,7 +8,6 @@ auth.onAuthStateChanged(user => {
 });
 
 //current user
-
 var currentUser = firebase.auth().currentUser;
 
 //signup

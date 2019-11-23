@@ -6,6 +6,7 @@ $(document).ready(function() {
   };
 
   renderListTitle();
+  renderLists();
 
   $(document).on('click','.sign-up-btn', function() {
     $('.main-content').load("views/sign-up.html");
@@ -30,7 +31,6 @@ $(document).ready(function() {
   $(document).on('click', '.view-lists-btn', function(event) {
     event.preventDefault();
     $(".main-content").load("views/view-lists.html");
-    $(window).on("load", renderLists());
   });
 
   $("#create-list-title-form").submit(function(event) {
