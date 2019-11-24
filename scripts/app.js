@@ -2,7 +2,7 @@
   $(".logged-out").hide();
   $(".logged-in").hide(); 
 
-  function setupUI(user) {
+  function setupUI(user) { 
     if (user) {
       $(".logged-in").show(); 
       $(".logged-out").hide();
@@ -16,7 +16,8 @@
   function createListTitle() {
     db.collection('lists').doc(FormData.listTitle).set({
       dueDate: FormData.dueDate, 
-      user: currentUser.email
+      user: currentUser.email,
+      items: []
     });
 
     db.collection('users').where("email", "==", currentUser.email)
@@ -44,20 +45,11 @@
     });
 
     $("#item").val("");
-    $("#item-list").append("<li>" + item + "</li><button class= btn glyphicon glyphicon-trash></button>");
+    $("#item-list").append("<li>" + item + '</li><button class="btn glyphicon glyphicon-trash"></button>');
   }
 
-  //get list name data
-  // db.collection('lists').where("user", "==", currentUser.email)
-  //   .get()
-  //   .then(function(snapshot) {
-  //   snapshot.forEach(function(doc) {
-  //     renderLists(doc.listName)
-  //   })
-  // });
-
-  //render lists
-  function renderLists(listName) {
+  //render lists to view-lists.html
+  function renderLists() {
     var currentUser = firebase.auth().currentUser;
 
     db.collection('users').where("email", "==", currentUser.email)
@@ -71,4 +63,43 @@
       })
     })
   }
-  
+
+  //delte list
+  function deleteList(id) {
+    db.collection('lists').doc(id).delete();
+    
+    var userRef = db.collection('users').where("email", "==", currentUser.email);
+    userRef.get()
+    .then(function(snapshot) {
+      snapshot.forEach(function(doc) {
+        doc.ref.update({
+          "lists": firebase.firestore.FieldValue.arrayRemove(id)
+        })
+      })
+    })
+  }
+
+  //open list
+  function openList(title) {
+    db.collection('lists').doc(title)
+    .get()
+    .then(function(snapshot) {
+      snapshot.data().items.forEach(function(item) {
+        var glyphButtons = '<button class="btn btn-danger glyphicon glyphicon-remove pull-right" data-id="' + item + '" + id="delete-item"></button><button class="btn btn-success glyphicon glyphicon-eye-open pull-right" data-id="' + item + '" + id="open-item"></button>'
+        $("#item-list").append('<br><li>' + item + glyphButtons + '</li>');
+      })
+      $("#content-title").text(title);
+    })
+  }
+
+  //delete item from db
+  function deleteItem(listId, item) {
+    var listRef = db.collection('lists').doc(listId);
+
+    listRef.get()
+    .then(function(snapshot) {
+      snapshot.ref.update({
+        "items": firebase.firestore.FieldValue.arrayRemove(item)
+      })
+    })
+  }

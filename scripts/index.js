@@ -9,28 +9,22 @@ $(document).ready(function() {
 
   $(document).on('click','.sign-up-btn', function() {
     $('.main-content').load("views/sign-up.html");
-  })
+  });
 
   $(document).on('click', '#signup-next-btn', function() {
     $("body").load("index.html .main-content");
-  })
+  });
 
   $(document).on('click', '.sign-in-btn', function() {
     $('.main-content').load("views/sign-in.html");
-  })
+  });
 
   $("#signin-form").submit(function() {
     $("body").load("index.html .main-content");
-  })
+  });
    
   $(document).on('click', '.create-list-btn', function() {
     $(".main-content").load("views/create-list-title.html");
-  })
-
-  $(document).on('click', '.view-lists-btn', function(event) {
-    event.preventDefault();
-    $(".main-content").load("views/view-lists.html");
-    renderLists();
   });
 
   $("#create-list-title-form").submit(function(event) {
@@ -38,7 +32,19 @@ $(document).ready(function() {
     FormData.listTitle = $("#listTitle").val();
     FormData.dueDate = $("#dueDate").val();
     createListTitle();
-    $(".main-content").load("views/create-list-items.html")
+    $(".main-content").load("views/create-list-items.html");
+  });
+
+  $(document).on('click', ".complete-list-btn", function(event) {
+    event.preventDefault();
+    $(".main-content").load("views/open-list.html");
+    openList(FormData.listTitle);
+  });
+
+  $(document).on('click', '.view-lists-btn', function(event) {
+    event.preventDefault();
+    $(".main-content").load("views/view-lists.html");
+    renderLists();
   });
   
   $("#add-item-form").submit(function(event) {
@@ -53,33 +59,21 @@ $(document).ready(function() {
 
   $(document).on('click', '#delete-list', function(event) {
     event.preventDefault();
-    var id = $(this).attr('data-id');
-    db.collection('lists').doc(id).delete();
-    
-    var userRef = db.collection('users').where("email", "==", currentUser.email);
-    userRef.get()
-    .then(function(snapshot) {
-      snapshot.forEach(function(doc) {
-        doc.ref.update({
-          "lists": firebase.firestore.FieldValue.arrayRemove(id)
-        })
-      })
-    })
-  })
+    deleteList($(this).attr('data-id'));
+    $(this).parent().remove();
+  });
 
-    // userRef
-    // .get()
-    // .then(function(snapshot) {
-    //   snapshot.forEach(function(doc) {
-    //     doc.data().lists.forEach(function(list) {
-    //       if(id == list) {
-    //         console.log(id, list);
-    //         userRef.update({
-    //           "lists": FieldValue.arrayRemove(list)
-    //         })
-    //       }
-    //     })
-    //   })
-    // })
+  $(document).on('click', '#open-list', function(event) {
+    event.preventDefault();
+    
+    openList($(this).attr('data-id'));
+    $(".main-content").load("views/open-list.html");
+  });
+
+  $(document).on('click', '#delete-item', function(event) {
+    event.preventDefault();
+    deleteItem($('#content-title').text(), $(this).attr('data-id'));
+    $(this).parent().remove();
+  });
 
 });
