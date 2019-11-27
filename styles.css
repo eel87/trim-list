@@ -14,6 +14,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  border: solid green 3px;
 }
 
 .main-content {
@@ -133,6 +134,5 @@ body {
 }
 
 .nav-buttons {
-  position: absolute;
-  margin-left: auto;
+  position: relative;
 }

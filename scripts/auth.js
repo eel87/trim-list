@@ -1,6 +1,7 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user) {
+    console.log("current user email = " + auth.currentUser.email);
     setupUI(user);
   } else {
     setupUI();
@@ -8,7 +9,7 @@ auth.onAuthStateChanged(user => {
 });
 
 //current user
-var currentUser = firebase.auth().currentUser;
+var currentUser = auth.currentUser;
 
 //signup
 $("#signup-form").submit(function(event) { 
@@ -35,6 +36,7 @@ $("#signin-form").submit(function(event) {
   var password = $("#signin-password").val();
   
   auth.signInWithEmailAndPassword(email, password);
+  $("body").load('index.html .main-content');
 });
 
 // log out

@@ -24,11 +24,11 @@ function renderCafe(doc){
 }
 
 // getting data
-// db.collection('cafes').orderBy('city').get().then(snapshot => {
-//     snapshot.docs.forEach(doc => {
-//         renderCafe(doc);
-//     });
-// });
+db.collection('cafes').orderBy('city').get().then(snapshot => {
+    snapshot.docs.forEach(doc => {
+        renderCafe(doc);
+    });
+});
 
-var t = $("<table cellspacing='0' class='text'></table>");
-$.append(t);
+// var t = $("<table cellspacing='0' class='text'></table>");
+// $.append(t);
