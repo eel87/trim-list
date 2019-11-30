@@ -1,18 +1,29 @@
-<h1 class="content-title" id="content-title">Sign Up<br></h1>
+<h1 class='content-title' id='content-title'>Sign Up<br></h1>
 
-<form class="form" id="signup-form">
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input class="form-control" type="text" id="name">
-    <label for="login-email">Email:</label>
-    <input class="form-control" type="email" id="signup-email" required>
+<form class='form' id='signup-form'>
+  <div class='form-group'>
+    <label for='name'>Name:</label>
+    <input class='form-control' type='text' id='name'>
+    <label for='login-email'>Email:</label>
+    <input class='form-control' type='email' id='signup-email' required>
     <label for='password'>Password:</label>
-    <input class="form-control" type="password" id='signup-password' required>
-    <button type="submit" id="signup-next-btn" aria-label="sign up">Sign Up</a>
+    <input class='form-control' type='password' id='signup-password' required>
+    <div class='form-btn-container'>
+      <button type='submit' class='btn btn-primary' id='signup-next-btn' aria-label='sign up'>Sign Up</a>
+    </div>
   </div>
 </form>
 
+<footer class='nav-buttons'>
+  <button aria-label='back' id='back-to-index'>
+    <span class='glyphicon glyphicon-arrow-left' aria-hidden='true'></span>
+  </button>
+  <button aria-label='sign out' class='logged-in pull-right' id='signout-btn'>
+    <span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>
+  </button>
+</footer>
 
-<script src="scripts/auth.js"></script>
-<script src="scripts/app.js"></script> 
-<script src="scripts/index.js"></script>
+
+<script src='scripts/auth.js'></script>
+<script src='scripts/app.js'></script> 
+<script src='scripts/index.js'></script>

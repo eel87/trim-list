@@ -14,7 +14,6 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  border: solid green 3px;
 }
 
 .main-content {
@@ -36,27 +35,43 @@ body {
   text-align: center;
 }
 
-.buttons {
+.index-buttons {
   position: relative;
   width: 250px;
-  height: 325px;
-  margin-top: 60px;
+  height: 300px;
+  margin-top: 75px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .btn-block {
+  vertical-align: middle;
   font-size: 25px;
-  text-align: center;
+  height: 100px;
   border: solid #1c2a43 1px;
   border-radius: 10px;
   color:white;
   background-color:  #408d8d; 
   padding-top: 15px;
   padding-bottom: 15px;
+  margin: 15px;
 }
 
 .btn-block:hover {
+  background-color: #1c2a43;
+  color: white;
+}
+
+button {
+  vertical-align: middle;
+  border-radius: 5px;
+  font-family: inherit;
+  border: solid #1c2a43 1px;
+  background-color: lightgray;
+  height: 30px;
+}
+
+button:hover {
   background-color: #1c2a43;
   color: white;
 }
@@ -65,7 +80,50 @@ body {
   font-size: 25px;
   padding-top: 15px;
   padding-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.glyphicon-log-out, .glyphicon-check, .glyphicon-log-in, .glyphicon-arrow-left, .glyphicon-arrow-right, .glyphicon-eye-open {
+  padding: 3px;
+  font-size: 20px;
+}
+
+#add-item-from-view-page, #add-list-from-view-page {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  font-size: 20px;
+  border: solid #1c2a43 1px;
+  color:white;
+  background-color:#408d8d; 
+  padding: 0px;
+}
+
+#add-list-from-view-page:hover {
+  background-color: #1c2a43;
+  color: white;
+} 
+
+#add-item-from-view-page:hover {
+  background-color: #1c2a43;
+  color: white;
+}
+
+#items-done {
+  border: solid #1c2a43 1px;
+  background-color:  #408d8d;
+  color:white;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#items-done:hover {
+  background-color: #1c2a43;
+  color: white;
+} 
 
 .form {
   margin-top: 60px;
@@ -80,41 +138,39 @@ body {
 .form-control {
   height: 50px;
   color: red;
+  border: solid grey 1px !important;
 }
 
-#sign-up-next-btn {
-  font-size: 28px;
-  width: 100px;
-  height: 50px;
-  margin-left: 100px;
-  margin-top: 50px;
+.form-btn-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#submit-signin-btn, #addItem, #sign-up-next-btn {
+  width: 50px;
 }
 
 #due-date-input {
   margin-top: 15px;
 }
 
-#submit-title-btn {
-  width: 100px;
-  border-radius: 4px;
+.items {
+  width: 450px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 45px;
-}
-
-#addItem {
-  width: 100px;
-  height: 40px;
-  margin-left: 100px;
-  margin-top: 10px;
-  font-size: 20px;
-}
-
-.items {
-  margin: auto;
   text-align: center;
   list-style-type: none;
   font-size: 20px;
+  height: 250px;
+  width: 475px;
+  overflow-y: auto;
+}
+
+#item-list {
+  height: 375px;
+  width: 475px;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 #lists {
@@ -124,7 +180,7 @@ body {
   text-align: left;
   list-style-type: none;
   font-size: 20px;
-  width: 300px;
+  width: 450px;
 }
 
 #delete-list, #open-list {
@@ -133,6 +189,22 @@ body {
   margin-left: 10px;
 }
 
+.list-buttons {
+  height: 350px;
+  overflow-y: auto;
+} 
+
+.view-page-btns {
+  position: absolute;
+  text-align: center;
+  width: 500px;
+  bottom: 7.5px;
+}
+
 .nav-buttons {
-  position: relative;
+  position: absolute;
+  left: 7.5px;
+  right: 7.5px;
+  bottom: 7.5px;
+  width: 475px;
 }

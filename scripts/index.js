@@ -23,36 +23,36 @@ $(document).ready(function() {
     $('.main-content').load('views/create-list-title.html');
   });
 
-  $("#create-list-title-form").submit(function(event) {
+  $('#create-list-title-form').submit(function(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
-    FormData.listTitle = $("#listTitle").val();
-    FormData.dueDate = $("#dueDate").val();
+    FormData.listTitle = $('#listTitle').val();
+    FormData.dueDate = $('#dueDate').val();
     createListTitle();
-    $(".main-content").load("views/create-list-items.html");
+    $('.main-content').load('views/create-list-items.html');
   });
 
-  $(document).on('click', ".complete-list-btn", function(event) {
+  $(document).on('click', '.complete-list-btn', function(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
-    $(".main-content").load("views/open-list.html");
+    $('.main-content').load('views/open-list.html');
     openList(FormData.listTitle);
   });
 
   $(document).on('click', '.view-lists-btn', function(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
-    $(".main-content").load("views/view-lists.html");
+    $('.main-content').load('views/view-lists.html');
     renderLists();
   });
 
-  $("#add-item-form").submit(function(event) {
+  $('#add-item-form').submit(function(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
-    addItem();
+    addItem($('.content-title').text());
   });
 
-  $(document).on('click', "#signout-btn", function(event) {
+  $(document).on('click', '#signout-btn', function(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
     location.reload();
@@ -68,9 +68,22 @@ $(document).ready(function() {
   $(document).on('click', '#open-list', function(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
-    $(".main-content").load("views/open-list.html");
+    $('.main-content').load('views/open-list.html');
     openList($(this).attr('data-id'));
   });
+
+  $(document).on('click', '#add-list-from-view-page', function(event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    $('.main-content').load('views/create-list-title.html');
+  })
+
+  $(document).on('click', '#add-item-from-view-page', function(event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    $('.main-content').load('views/create-list-items.html');
+    FormData.listTitle = $('.content-title').text();
+  })
 
   $(document).on('click', '#delete-item', function(event) {
     event.preventDefault();
@@ -79,10 +92,14 @@ $(document).ready(function() {
     $(this).parent().remove();
   });
 
-  $(document).on('click', '.view-list-back-btn', function(event) {
+  $(document).on('click', '#view-list-back-btn', function(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
     $('.main-content').load('views/view-lists.html');
     renderLists();
   })
+
+  $(document).on('click', '#back-to-index', function(event) {
+    location.reload();
+  });
 });

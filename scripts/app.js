@@ -1,14 +1,14 @@
 //show logged in/out UI button options
-$(".logged-out").hide();
-$(".logged-in").hide(); 
+$('.logged-out').hide();
+$('.logged-in').hide(); 
 
 function setupUI(user) { 
   if (user) {
-    $(".logged-in").show(); 
-    $(".logged-out").hide();
+    $('.logged-in').show(); 
+    $('.logged-out').hide();
   } else {
-    $(".logged-in").hide(); 
-    $(".logged-out").show();
+    $('.logged-in').hide(); 
+    $('.logged-out').show();
   }
 };
 
@@ -20,7 +20,7 @@ function createListTitle() {
     items: []
   });
 
-  db.collection('users').where("email", "==", currentUser.email)
+  db.collection('users').where('email', '==', currentUser.email)
   .get()
   .then(function(snapshot) {
     snapshot.forEach(function(doc) {
@@ -32,32 +32,32 @@ function createListTitle() {
 }
 
 function renderListTitle() {
-  $("#content-title").text(FormData.listTitle);
+  $('#content-title').text(FormData.listTitle);
 }
 
 //add item to db
-function addItem() {
-  var listRef = db.collection('lists').doc(FormData.listTitle);
-  var item = $("#item").val();
+function addItem(title) {
+  var listRef = db.collection('lists').doc(title);
+  var item = $('#item').val();
 
   listRef.update({
     items: firebase.firestore.FieldValue.arrayUnion(item)
   });
 
-  $("#item").val("");
-  $("#item-list-create-page").append("<li>" + item + '</li><button class="btn glyphicon glyphicon-trash"></button>');
+  $('#item').val('');
+  $('#item-list-create-page').append('<li>' + item + '<button class="btn btn-danger glyphicon glyphicon-trash pull-right" data-id="' + item + '"id="delete-item"></button></li><br>')
 }
 
 //render lists to view-lists.html
 function renderLists() {
   var currentUser = firebase.auth().currentUser; 
-  db.collection('users').where("email", "==", currentUser.email)
+  db.collection('users').where('email', '==', currentUser.email)
   .get()
   .then(function(snapshot) {
     snapshot.forEach(function(doc) {
       doc.data().lists.forEach(function(list) {
-        var glyphButtons = '<button class="btn btn-danger glyphicon glyphicon-remove pull-right" data-id="' + list + '" + id="delete-list"></button><button class="btn btn-success glyphicon glyphicon-eye-open pull-right" data-id="' + list + '" + id="open-list"></button>'
-        $(".list-titles-list").append('<br><li>' + list + glyphButtons + '</li>');
+        var glyphButtons = '<button class="btn btn-danger glyphicon glyphicon-trash pull-right" data-id="' + list + '"id="delete-list"></button><button class="btn btn-primary glyphicon glyphicon-eye-open pull-right" data-id="' + list + '"id="open-list"></button>'
+        $('.list-titles-list').append('<li>' + list + glyphButtons + '</li><br>');
       })
     })
   })
@@ -67,12 +67,12 @@ function renderLists() {
 function deleteList(id) {
   db.collection('lists').doc(id).delete();
   
-  var userRef = db.collection('users').where("email", "==", currentUser.email);
+  var userRef = db.collection('users').where('email', '==', currentUser.email);
   userRef.get()
   .then(function(snapshot) {
     snapshot.forEach(function(doc) {
       doc.ref.update({
-        "lists": firebase.firestore.FieldValue.arrayRemove(id)
+        'lists': firebase.firestore.FieldValue.arrayRemove(id)
       })
     })
   })
@@ -84,10 +84,10 @@ function openList(title) {
   ref.get()
   .then(function(snapshot) {
     snapshot.data().items.forEach(function(item) {
-        var glyphButtons = '<button class="btn btn-danger glyphicon glyphicon-remove pull-right" data-id="' + item + '" + id="delete-item"></button>'
-        $("#item-list").append('<br><li>' + item + glyphButtons + '</li>');
+        var glyphButtons = '<button class="btn btn-danger glyphicon glyphicon-trash pull-right" data-id="' + item + '"id="delete-item"></button>'
+        $('#item-list').append('<br><li>' + item + glyphButtons + '</li>');
       })
-    $("#content-title").text(title);
+    $('#content-title').text(title);
   })
 }
 
@@ -98,7 +98,7 @@ function deleteItem(listId, item) {
   listRef.get()
   .then(function(snapshot) {
     snapshot.ref.update({
-      "items": firebase.firestore.FieldValue.arrayRemove(item)
+      'items': firebase.firestore.FieldValue.arrayRemove(item)
     })
   })
 }

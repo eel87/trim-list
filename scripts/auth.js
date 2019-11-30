@@ -1,7 +1,6 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user) {
-    console.log("current user email = " + auth.currentUser.email);
     setupUI(user);
   } else {
     setupUI();
@@ -12,12 +11,12 @@ auth.onAuthStateChanged(user => {
 var currentUser = auth.currentUser;
 
 //signup
-$("#signup-form").submit(function(event) { 
+$('#signup-form').submit(function(event) { 
   event.preventDefault();
 
-  var name = $("#name").val();
-  var email = $("#signup-email").val();
-  var password = $("#signup-password").val();
+  var name = $('#name').val();
+  var email = $('#signup-email').val();
+  var password = $('#signup-password').val();
 
   // sign up the user
   auth.createUserWithEmailAndPassword(email, password).then((user) => {
@@ -29,18 +28,18 @@ $("#signup-form").submit(function(event) {
 });
 
 // signin
-$("#signin-form").submit(function(event) {
+$('#signin-form').submit(function(event) {
   event.preventDefault();
 
-  var email = $("#signin-email").val();
-  var password = $("#signin-password").val();
+  var email = $('#signin-email').val();
+  var password = $('#signin-password').val();
   
   auth.signInWithEmailAndPassword(email, password);
-  $("body").load('index.html .main-content');
+  $('body').load('index.html .main-content');
 });
 
 // log out
-$("#signout-btn").click(function(event) {
+$('#signout-btn').click(function(event) {
   event.preventDefault();
   auth.signOut();
 });

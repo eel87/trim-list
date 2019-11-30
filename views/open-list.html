@@ -1,13 +1,24 @@
-<h1 class="content-title" id="content-title"></h1>
+<h1 class='content-title' id='content-title'></h1>
 
-<section class="items" id="item-list">
+<section class='items' id='item-list'>
 </section>
 
-<div class="nav-buttons">
-  <button class="view-list-back-btn btn btn-default">Back</button>
+<div class='view-page-btns'>
+  <button aria-label='create new list' id='add-item-from-view-page'>
+    <span class='plus glyphicon glyphicon-plus' aria-hidden='true'></span>
+  </button>
 </div>
 
-<script src="scripts/auth.js"></script>
-<script src="scripts/app.js"></script> 
-<script src="scripts/index.js"></script>
+<footer class='nav-buttons'>
+  <button aria-label='view lists' class='view-lists-btn'>
+    <span class='glyphicon glyphicon-eye-open' aria-hidden='true'></span>
+  </button>
+  <button aria-label='sign out' class='logged-in pull-right' id='signout-btn'>
+    <span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>
+  </button>
+</footer>
+
+<script src='scripts/auth.js'></script>
+<script src='scripts/app.js'></script> 
+<script src='scripts/index.js'></script>
 
