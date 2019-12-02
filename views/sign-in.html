@@ -1,11 +1,11 @@
 <h1 class='content-title' id='content-title'>Sign In<br></h1>
 
-<form class='form' id='signin-form' role='form'>
+<form class='form' aria-label='sign in form with email and password' id='signin-form' role='form'>
   <div class='form-group'>
     <label for='login-email'>Email:</label>
-    <input class='form-control' type='email' id='signin-email' required>
+    <input aria-label='enter email' class='form-control' type='email' id='signin-email' autocomplete="new-email"  required>
     <label for='password'>Password:</label>
-    <input class='form-control' type='password' id='signin-password' required>
+    <input aria-label='enter password' class='form-control' type='password' id='signin-password' autocomplete="new-password"  required>
     <div class='form-btn-container'>
       <button type='submit' class='btn btn-primary glyphicon glyphicon-arrow-right' id='submit-signin-btn' aria-label='sign in'>      </button>
     </div>

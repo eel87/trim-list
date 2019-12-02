@@ -6,6 +6,12 @@ $(document).ready(function() {
   };
 
   renderListTitle();
+  
+  //focus forms on page load
+  $('#listTitle').focus();
+  $('#item').focus();
+  $('#signin-email').focus();
+  $('#name').focus();
 
   $(document).on('click','.sign-up-btn', function() {
     $('.main-content').load('views/sign-up.html');
@@ -17,6 +23,8 @@ $(document).ready(function() {
 
   $(document).on('click', '.sign-in-btn', function() {
     $('.main-content').load('views/sign-in.html');
+    $('#signin-email').val('hello');
+    $('#signin-password').val('');
   });
 
   $(document).on('click', '.create-list-btn', function() {

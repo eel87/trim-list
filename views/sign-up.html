@@ -1,13 +1,13 @@
 <h1 class='content-title' id='content-title'>Sign Up<br></h1>
 
-<form class='form' id='signup-form'>
+<form class='form' aria-label='sign up form with name, email and password' id='signup-form'>
   <div class='form-group'>
     <label for='name'>Name:</label>
-    <input class='form-control' type='text' id='name'>
+    <input aria-label='enter your name' class='form-control' type='text' id='name' autocomplete="new-name" >
     <label for='login-email'>Email:</label>
-    <input class='form-control' type='email' id='signup-email' required>
+    <input aria-label='enter email' class='form-control' type='email' id='signup-email' autocomplete="new-email" required>
     <label for='password'>Password:</label>
-    <input class='form-control' type='password' id='signup-password' required>
+    <input aria-label='create password' class='form-control' type='password' autocomplete="new-password" id='signup-password' required>
     <div class='form-btn-container'>
       <button type='submit' class='btn btn-primary' id='signup-next-btn' aria-label='sign up'>Sign Up</a>
     </div>

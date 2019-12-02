@@ -1,22 +1,23 @@
 
 <h1 class='content-title' id='content-title'>List Title</h1>
 
-<form class='form' id='add-item-form'>
+<form class='form' aria-label='add item form' id='add-item-form'>
   <div class='form-group'>
-    <label for='listItem' class='listItem'>Item:</label>
-    <input class='form-control' type='text' id='item'>
+    <label for='listItem' aria-hidden='true' class='listItem'>Item:</label>
+    <input aria-label='enter to-do item' class='form-control' type='text' id='item'>
     <div class='form-btn-container'>
-      <button class='btn btn-primary glyphicon glyphicon-plus' id='addItem'></button>
+      <button aria-label='add another item' class='btn btn-primary glyphicon glyphicon-plus' id='addItem'></button>
     </div>
   </div>
 </form>
 
-<section class='items' id='item-list-create-page'>
-  <li></li> 
+<section >
+  <ul aria-role='list' class='items' id='item-list-create-page'>
+  </ul>
 </section>
 
 <div class='view-page-btns'>
-  <button class='complete-list-btn' id='items-done'>
+  <button aria-label='next' class='complete-list-btn' id='items-done'>
       <span class='glyphicon glyphicon-check'></span>
   </button>
 </div>

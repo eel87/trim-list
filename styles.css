@@ -80,13 +80,34 @@ button:hover {
   font-size: 25px;
   padding-top: 15px;
   padding-bottom: 15px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 .glyphicon-log-out, .glyphicon-check, .glyphicon-log-in, .glyphicon-arrow-left, .glyphicon-arrow-right, .glyphicon-eye-open {
   padding: 3px;
   font-size: 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  position: relative;
+  margin-left: 5px;
+  margin-bottom: 7px;
+}
+
+li .glyphicon-trash {
+  position: absolute; 
+  right: 0px;
+  font-size: 15px;
+}
+
+li .glyphicon-eye-open {
+  position: absolute;
+  right: 45px;
 }
 
 #add-item-from-view-page, #add-list-from-view-page {
@@ -185,8 +206,6 @@ button:hover {
 
 #delete-list, #open-list {
   text-align: right;
-  margin-right: 10px;
-  margin-left: 10px;
 }
 
 .list-buttons {

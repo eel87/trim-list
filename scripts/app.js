@@ -12,8 +12,15 @@ function setupUI(user) {
   }
 };
 
+//render list title
+function renderListTitle() {
+  $('#content-title').text(FormData.listTitle);
+}
+
 //add list title and due date to db
 function createListTitle() {
+  $('#listTitle').focus();
+
   db.collection('lists').doc(FormData.listTitle).set({
     dueDate: FormData.dueDate, 
     user: currentUser.email,
@@ -31,12 +38,9 @@ function createListTitle() {
   })
 }
 
-function renderListTitle() {
-  $('#content-title').text(FormData.listTitle);
-}
-
 //add item to db
 function addItem(title) {
+
   var listRef = db.collection('lists').doc(title);
   var item = $('#item').val();
 
@@ -45,7 +49,8 @@ function addItem(title) {
   });
 
   $('#item').val('');
-  $('#item-list-create-page').append('<li>' + item + '<button class="btn btn-danger glyphicon glyphicon-trash pull-right" data-id="' + item + '"id="delete-item"></button></li><br>')
+  $('#item-list-create-page').append('<li aria-role"list item">' + item + '<button aria-label="delete' + item + '" class="btn btn-danger glyphicon glyphicon-trash" data-id="' + item + '"id="delete-item"></button></li>')
+  $('#item').focus();
 }
 
 //render lists to view-lists.html
@@ -56,8 +61,8 @@ function renderLists() {
   .then(function(snapshot) {
     snapshot.forEach(function(doc) {
       doc.data().lists.forEach(function(list) {
-        var glyphButtons = '<button class="btn btn-danger glyphicon glyphicon-trash pull-right" data-id="' + list + '"id="delete-list"></button><button class="btn btn-primary glyphicon glyphicon-eye-open pull-right" data-id="' + list + '"id="open-list"></button>'
-        $('.list-titles-list').append('<li>' + list + glyphButtons + '</li><br>');
+        var glyphButtons = '<button aria-label="open' + list + '" class="btn btn-primary glyphicon glyphicon-eye-open" data-id="' + list + '"id="open-list"></button><button aria-label="delete' + list + '" class="btn btn-danger glyphicon glyphicon-trash" data-id="' + list + '"id="delete-list"></button>'
+        $('.list-titles-list').append('<li aria-role"list title">' + list + glyphButtons + '</li>');
       })
     })
   })
@@ -84,8 +89,8 @@ function openList(title) {
   ref.get()
   .then(function(snapshot) {
     snapshot.data().items.forEach(function(item) {
-        var glyphButtons = '<button class="btn btn-danger glyphicon glyphicon-trash pull-right" data-id="' + item + '"id="delete-item"></button>'
-        $('#item-list').append('<br><li>' + item + glyphButtons + '</li>');
+        var glyphButtons = '<button aria-label="delete' + item + '" class="btn btn-danger glyphicon glyphicon-trash" data-id="' + item + '"id="delete-item"></button>'
+        $('#item-list').append('<li aria-role="list item">' + item + glyphButtons + '</li>');
       })
     $('#content-title').text(title);
   })
