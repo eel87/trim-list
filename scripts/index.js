@@ -1,3 +1,6 @@
+$('.logged-out').hide();
+$('.logged-in').hide();
+
 $(document).ready(function() {
 
   $(window).FormData = {
@@ -6,25 +9,22 @@ $(document).ready(function() {
   };
 
   renderListTitle();
-  
+
   //focus forms on page load
   $('#listTitle').focus();
   $('#item').focus();
   $('#signin-email').focus();
   $('#name').focus();
 
+  //focus headings on page loads
+  $('h1').focus();
+
   $(document).on('click','.sign-up-btn', function() {
     $('.main-content').load('views/sign-up.html');
   });
 
-  $(document).on('click', '#signup-next-btn', function() {
-    $('body').load('index.html .main-content');
-  });
-
   $(document).on('click', '.sign-in-btn', function() {
     $('.main-content').load('views/sign-in.html');
-    $('#signin-email').val('hello');
-    $('#signin-password').val('');
   });
 
   $(document).on('click', '.create-list-btn', function() {

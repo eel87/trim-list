@@ -1,14 +1,10 @@
-//show logged in/out UI button options
-$('.logged-out').hide();
-$('.logged-in').hide(); 
-
 function setupUI(user) { 
+  $('.logged-out').hide();
+  $('.logged-in').hide();
   if (user) {
-    $('.logged-in').show(); 
-    $('.logged-out').hide();
+    $(".logged-in").show();
   } else {
-    $('.logged-in').hide(); 
-    $('.logged-out').show();
+    $(".logged-out").show();
   }
 };
 
