@@ -2,22 +2,19 @@ $('.logged-out').hide();
 $('.logged-in').hide();
 
 $(document).ready(function() {
+  //focus headings on page loads
+  $('h1').focus();
 
   $(window).FormData = {
     listTitle: '',
     dueDate: ''
   };
-
-  renderListTitle();
-
+  
   //focus forms on page load
   $('#listTitle').focus();
   $('#item').focus();
   $('#signin-email').focus();
   $('#name').focus();
-
-  //focus headings on page loads
-  $('h1').focus();
 
   $(document).on('click','.sign-up-btn', function() {
     $('.main-content').load('views/sign-up.html');
@@ -70,6 +67,9 @@ $(document).ready(function() {
     event.preventDefault();
     event.stopImmediatePropagation();
     deleteList($(this).attr('data-id'));
+    $(this).parent().attr('role', 'alert');
+    $(this).parent().text($(this).attr('data-id') + ' has been deleted');
+    $(this).parent().focus();
     $(this).parent().remove();
   });
 
@@ -97,7 +97,9 @@ $(document).ready(function() {
     event.preventDefault();
     event.stopImmediatePropagation();
     deleteItem($('#content-title').text(), $(this).attr('data-id'));
-    $(this).parent().remove();
+    $(this).parent().attr('role', 'alert');
+    $(this).parent().text($(this).attr('data-id') + ' has been deleted');
+    $(this).parent().focus();
   });
 
   $(document).on('click', '#view-list-back-btn', function(event) {

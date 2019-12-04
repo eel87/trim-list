@@ -8,17 +8,57 @@ html {
 }
 
 body {
-  background-image: url(assets/background_img.jpg);  
+  background-image: url(assets/background_img.jpg); 
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
 }
+
+@media only screen and (max-width: 600px) {
+  #main-content {
+      width: 90%;
+      margin-top: 10px;
+    } 
+
+    li {
+      width: 65%;
+    }
+
+    .main-content .nav-buttons {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .main-content .view-page-btns {
+      width: 100%;
+    }
+
+    .main-content .btn-block {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+
+    .form-group .form-control {
+      width: 95%;
+      /* margin-left: 10px; */
+    }
+
+    .form {
+      margin-left: 5px;
+    }
+  }
 
 .alert {
   z-index: -1;
   display: none;
+  font-size: 20px;
 }
 
 h1:focus {
@@ -26,10 +66,10 @@ h1:focus {
 }
 
 .main-content {
+  width: 500px;
   box-sizing: border-box;
   border: solid #1c2a43 2px;
   border-radius: 10px;
-  width: 500px;
   height: 600px; 
   background-color: white;
   position: relative;
@@ -44,6 +84,11 @@ h1:focus {
   text-align: center;
 }
 
+.due-date {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
 .index-buttons {
   position: relative;
   width: 250px;
@@ -54,6 +99,7 @@ h1:focus {
 }
 
 .btn-block {
+  position: relative;
   vertical-align: middle;
   font-size: 25px;
   height: 100px;
@@ -167,11 +213,6 @@ li .glyphicon-eye-open {
   height: 50px;
   color: red;
   border: solid grey 1px !important;
-}
-
-.form-btn-container {
-  margin-top: 10px;
-  text-align: center;
 }
 
 #submit-signin-btn, #addItem, #sign-up-next-btn {

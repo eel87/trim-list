@@ -8,11 +8,6 @@ function setupUI(user) {
   }
 };
 
-//render list title
-function renderListTitle() {
-  $('#content-title').text(FormData.listTitle);
-}
-
 //add list title and due date to db
 function createListTitle() {
   $('#listTitle').focus();
@@ -34,7 +29,7 @@ function createListTitle() {
   })
 }
 
-//add item to db
+//add item
 function addItem(title) {
 
   var listRef = db.collection('lists').doc(title);
@@ -52,16 +47,22 @@ function addItem(title) {
 //render lists to view-lists.html
 function renderLists() {
   var currentUser = firebase.auth().currentUser; 
+
   db.collection('users').where('email', '==', currentUser.email)
   .get()
   .then(function(snapshot) {
     snapshot.forEach(function(doc) {
       doc.data().lists.forEach(function(list) {
-        var glyphButtons = '<button aria-label="open' + list + '" class="btn btn-primary glyphicon glyphicon-eye-open" data-id="' + list + '"id="open-list"></button><button aria-label="delete' + list + '" class="btn btn-danger glyphicon glyphicon-trash" data-id="' + list + '"id="delete-list"></button>'
-        $('.list-titles-list').append('<li aria-role"list title">' + list + glyphButtons + '</li>');
+        db.collection('lists').doc(list).get()
+        .then(function(snapshot) {
+          dueDate = snapshot.data().dueDate;
+        
+          var glyphButtons = '<button aria-label="open' + list + '" class="btn btn-primary glyphicon glyphicon-eye-open" data-id="' + list + '"id="open-list"></button><button aria-label="delete' + list + '" class="btn btn-danger glyphicon glyphicon-trash" data-id="' + list + '"id="delete-list"></button>'
+          $('.list-titles-list').append('<li aria-role"list title">' + list + '<br><small>' + dueDate + '</small>' + glyphButtons + '</li>');
+        })
       })
     })
-  })
+  }) 
 }
 
 //delete list
@@ -89,8 +90,9 @@ function openList(title) {
         $('#item-list').append('<li aria-role="list item">' + item + glyphButtons + '</li>');
       })
     $('#content-title').text(title);
-  })
-}
+    $('.due-date').text('Due Date: ' + snapshot.data().dueDate);
+  });
+};
 
 //delete item from db
 function deleteItem(listId, item) {
