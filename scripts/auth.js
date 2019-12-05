@@ -37,7 +37,7 @@ $('#signup-form').submit(function(event) {
     $('.alert').show();
     $('.error-message').text(errorMessage);
   });
-  $('index.html').reload();
+  location.reload();
 });
 
 
