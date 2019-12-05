@@ -20,9 +20,9 @@ $(document).ready(function() {
     $('.main-content').load('views/sign-up.html');
   });
 
-  $('#signup-form').submit(function(event) { 
-    location.reload();
-  });
+  // $('#signup-form').submit(function(event) { 
+  //   $('.main-content').load('index.html .main-content')
+  // });
 
   $(document).on('click', '.sign-in-btn', function() {
     $('.main-content').load('views/sign-in.html');
