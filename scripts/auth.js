@@ -36,7 +36,7 @@ $('#signup-form').submit(function(event) {
     $('.error-message').text(errorMessage);
   });
 
-  $(document).reload();
+  $('body').load('index.html body')
 });
 
 
