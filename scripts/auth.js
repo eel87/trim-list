@@ -15,8 +15,8 @@ var currentUser = auth.currentUser;
 
 //signup
 $('#signup-form').submit(function(event) { 
-  event.preventDefault();
-  event.stopImmediatePropagation();
+  // event.preventDefault();
+  // event.stopImmediatePropagation();
 
   var name = $('#name').val();
   var email = $('#signup-email').val();
@@ -34,14 +34,8 @@ $('#signup-form').submit(function(event) {
     var errorMessage = error.message;
     $('.alert').show();
     $('.error-message').text(errorMessage);
-    location.reload();
   });
-
-   //add user to db
-  //  db.collection('users').add({
-  //   name: name,
-  //   email: email
-  // });
+  // location.reload();
 });
 
 
@@ -68,5 +62,5 @@ $('#signin-form').submit(function(event) {
 $('#signout-btn').click(function(event) {
   event.preventDefault();
   auth.signOut();
-  window.reload();
+  location.reload();
 });
