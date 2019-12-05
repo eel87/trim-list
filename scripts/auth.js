@@ -23,11 +23,18 @@ $('#signup-form').submit(function(event) {
   var password = $('#signup-password').val();
 
   // sign up the user
-  auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
+  auth.createUserWithEmailAndPassword(email, password).then(function() {
+  //add user to db
+    db.collection('users').add({
+      name: name,
+      email: email
+    });
+  }).catch(function(error) {
     // Handle Errors here.
     var errorMessage = error.message;
     $('.alert').show();
     $('.error-message').text(errorMessage);
+    location.reload();
   });
 
    //add user to db
@@ -35,8 +42,6 @@ $('#signup-form').submit(function(event) {
     name: name,
     email: email
   });
-
-  location.reload(false);
 });
 
 
