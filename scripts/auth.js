@@ -15,8 +15,6 @@ var currentUser = auth.currentUser;
 
 //signup
 $('#signup-form').submit(function(event) { 
-  $('.logged-out').hide();
-  $('.logged-in').hide();
   event.preventDefault();
   event.stopImmediatePropagation();
 
@@ -25,7 +23,8 @@ $('#signup-form').submit(function(event) {
   var password = $('#signup-password').val();
 
   // sign up the user
-  auth.createUserWithEmailAndPassword(email, password).then(function() {
+  auth.createUserWithEmailAndPassword(email, password).then(function(user) {
+   var  currentUser = user;
   //add user to db
     db.collection('users').add({
       name: name,
@@ -37,7 +36,7 @@ $('#signup-form').submit(function(event) {
     $('.alert').show();
     $('.error-message').text(errorMessage);
   });
-  location.reload();
+  ('index.html').load();
 });
 
 
