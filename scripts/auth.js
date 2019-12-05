@@ -38,10 +38,10 @@ $('#signup-form').submit(function(event) {
   });
 
    //add user to db
-   db.collection('users').add({
-    name: name,
-    email: email
-  });
+  //  db.collection('users').add({
+  //   name: name,
+  //   email: email
+  // });
 });
 
 
