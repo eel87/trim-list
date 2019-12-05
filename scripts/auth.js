@@ -15,6 +15,8 @@ var currentUser = auth.currentUser;
 
 //signup
 $('#signup-form').submit(function(event) { 
+  $('.logged-out').hide();
+  $('.logged-in').hide();
   event.preventDefault();
   event.stopImmediatePropagation();
 
@@ -35,8 +37,6 @@ $('#signup-form').submit(function(event) {
     $('.alert').show();
     $('.error-message').text(errorMessage);
   });
-  $('.logged-out').hide();
-  $('.logged-in').hide(); 
   $('body').load('index.html .main-content')
 });
 
