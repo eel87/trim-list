@@ -61,15 +61,17 @@ $('#signin-form').submit(function(event) {
   var email = $('#signin-email').val();
   var password = $('#signin-password').val();
   
-  auth.signInWithEmailAndPassword(email, password).then((user) => {
-    location.reload(); 
-  })
+  auth.signInWithEmailAndPassword(email, password) 
   .catch(function(error) {
     // Handle Errors here.
     var errorMessage = error.message;
     $('.alert').show();
     $('.error-message').text(errorMessage);
   })
+  
+  $('body').load('index.html #main-content', function() {
+    $('.logged-out').hide();
+  });
 });
 
 // log out
