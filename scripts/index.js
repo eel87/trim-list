@@ -20,6 +20,10 @@ $(document).ready(function() {
     $('.main-content').load('views/sign-up.html');
   });
 
+  $('#signup-form').submit(function(event) { 
+    location.reload();
+  });
+
   $(document).on('click', '.sign-in-btn', function() {
     $('.main-content').load('views/sign-in.html');
   });

@@ -15,8 +15,8 @@ var currentUser = auth.currentUser;
 
 //signup
 $('#signup-form').submit(function(event) { 
-  // event.preventDefault();
-  // event.stopImmediatePropagation();
+  event.preventDefault();
+  event.stopImmediatePropagation();
 
   var name = $('#name').val();
   var email = $('#signup-email').val();
@@ -35,7 +35,6 @@ $('#signup-form').submit(function(event) {
     $('.alert').show();
     $('.error-message').text(errorMessage);
   });
-  // location.reload();
 });
 
 
