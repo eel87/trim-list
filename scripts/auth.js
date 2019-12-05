@@ -13,11 +13,6 @@ auth.onAuthStateChanged(user => {
 //current user
 var currentUser = auth.currentUser;
 
-//error message
-function displayError(code, message) {
-
-}
-
 //signup
 $('#signup-form').submit(function(event) { 
   event.preventDefault();
@@ -28,21 +23,20 @@ $('#signup-form').submit(function(event) {
   var password = $('#signup-password').val();
 
   // sign up the user
-  auth.createUserWithEmailAndPassword(email, password)
-  .then((user) => {
-    db.collection('users').add({
-      name: name,
-      email: email
-    })
-    location.reload(); 
-  })
-  .catch(function(error) {
+  auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorMessage = error.message;
     $('.alert').show();
     $('.error-message').text(errorMessage);
-  })
+  });
+
+   //add user to db
+   db.collection('users').add({
+    name: name,
+    email: email
+  });
 });
+
 
 // signin
 $('#signin-form').submit(function(event) {
