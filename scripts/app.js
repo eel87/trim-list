@@ -1,13 +1,3 @@
-function setupUI(user) { 
-  $('.logged-out').hide();
-  $('.logged-in').hide();
-  if (user) {
-    $(".logged-in").show();
-  } else {
-    $(".logged-out").show();
-  }
-};
-
 //add list title and due date to db
 function createListTitle() {
   $('#listTitle').focus();

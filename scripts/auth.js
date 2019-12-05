@@ -1,6 +1,16 @@
 $('.logged-out').hide();
 $('.logged-in').hide();
 
+function setupUI(user) { 
+  $('.logged-out').hide();
+  $('.logged-in').hide();
+  if (user) {
+    $(".logged-in").show();
+  } else {
+    $(".logged-out").show();
+  }
+};
+
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user) {
@@ -36,7 +46,10 @@ $('#signup-form').submit(function(event) {
     $('.alert').show();
     $('.error-message').text(errorMessage);
   });
-  ('body').load('index.html');
+  
+  $('body').load('index.html #main-content', function() {
+    $('.logged-out').hide();
+  });
 });
 
 
