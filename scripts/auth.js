@@ -35,6 +35,8 @@ $('#signup-form').submit(function(event) {
     name: name,
     email: email
   });
+
+  location.reload();
 });
 
 
