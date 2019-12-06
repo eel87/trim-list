@@ -2,21 +2,13 @@
   font-family: 'Lato', sans-serif;
 }
 
-html {
+html, body {
   height: 100%;
-  overflow: auto;
-}
-
-body {
-  background-image: url(assets/background_img.jpg); 
+  margin: 0;
+  background-image: url("assets/background_img.jpg");
   background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   overflow: auto;
-  width: 100vw;
-  height: 100vh;
 }
 
 @media only screen and (max-width: 600px) {
@@ -47,7 +39,6 @@ body {
 
     .form-group .form-control {
       width: 95%;
-      /* margin-left: 10px; */
     }
 
     .form {
@@ -71,7 +62,7 @@ h1:focus {
   border: solid #1c2a43 2px;
   border-radius: 10px;
   height: 600px; 
-  background-color: white;
+  background-color: whitesmoke;
   position: relative;
   margin-top: 100px;
   margin-left: auto;
